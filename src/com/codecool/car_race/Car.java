@@ -1,5 +1,5 @@
 package com.codecool.car_race;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Car extends Vehicle{
     private String[] carNames = {"Paradox", "Formula", "Temper", "Alabaster", "Crusader", "Hydra", "Paragon",
@@ -7,11 +7,10 @@ public class Car extends Vehicle{
             "Silver", "Deputy", "Curiosity"};
 
     Car() {
-        Random randInt = new Random();
-        int randomSpeed = randInt.nextInt(110) + 80;
+        int randomSpeed = ThreadLocalRandom.current().nextInt(80, 111);
         setSpeed(randomSpeed);
-        int firstName = randInt.nextInt(19);
-        int secondName = randInt.nextInt(19);
+        int firstName = ThreadLocalRandom.current().nextInt(0, 19);
+        int secondName = ThreadLocalRandom.current().nextInt(0, 19);
         setName(carNames[firstName] + carNames[secondName]);
     }
 

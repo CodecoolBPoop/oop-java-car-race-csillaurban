@@ -1,6 +1,6 @@
 package com.codecool.car_race;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Motorcycle extends Vehicle{
     private int nameInt = 1;
@@ -12,8 +12,7 @@ public class Motorcycle extends Vehicle{
 
     @Override
     void moveForAnHour(Race race) {
-        Random randInt = new Random();
-        int decrSpeed = randInt.nextInt(50) + 5;
+        int decrSpeed = ThreadLocalRandom.current().nextInt(5, 51);
         if(Weather.isRaining()) {
             setDistanceTraveled(getSpeed() - decrSpeed);
         } else {

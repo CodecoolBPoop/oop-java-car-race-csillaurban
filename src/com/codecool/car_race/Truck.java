@@ -1,18 +1,17 @@
 package com.codecool.car_race;
-import java.util.Random;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Truck extends Vehicle {
 
     Truck() {
-        Random randInt = new Random();
         setSpeed(100);
-        setName("Truck" + randInt.nextInt(1001));
+        setName("Truck" + ThreadLocalRandom.current().nextInt(0, 1001));
     }
 
     @Override
     void moveForAnHour(Race race) {
-        Random randInt = new Random();
-        int valueForBreakDown = randInt.nextInt(100) + 1;
+        int valueForBreakDown = ThreadLocalRandom.current().nextInt(1, 101);
 
         if(valueForBreakDown <= 5 && getBreakdownTurnsLeft() == 0) {
             setDistanceTraveled(0);
